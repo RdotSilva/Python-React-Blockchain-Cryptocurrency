@@ -19,3 +19,6 @@ class Blockchain:
 
     def add_block(self, data):
         self.chain.append(Block(data))
+
+    def __repr__(self):
+        return f"Blockchain: {self.chain}"
