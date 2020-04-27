@@ -16,3 +16,6 @@ class Blockchain:
 
     def __init__(self):
         self.chain = []
+
+    def add_block(self, data):
+        self.chain.append(Block(data))
