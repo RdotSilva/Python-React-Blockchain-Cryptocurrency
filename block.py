@@ -34,10 +34,11 @@ class Block:
 
     def __repr__(self):
         return (
-            "Block(" f"timestamp: {self.timestamp}",
-            f"last_hash: {self.last_hash}",
-            f"hash: {self.hash}",
-            f"data: {self.data})",
+            "Block("
+            f"timestamp: {self.timestamp}, "
+            f"last_hash: {self.last_hash}, "
+            f"hash: {self.hash}, "
+            f"data: {self.data})"
         )
 
 
