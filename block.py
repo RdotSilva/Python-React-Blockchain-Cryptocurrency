@@ -11,7 +11,12 @@ class Block:
         self.data = data
 
     def __repr__(self):
-        return f"Block - data: {self.data}"
+        return (
+            "Block(" f"timestamp: {self.timestamp}",
+            f"last_hash: {self.last_hash}",
+            f"hash: {self.hash}",
+            f"data: {self.data})",
+        )
 
 
 def main():
