@@ -1,3 +1,9 @@
+def mine_block(last_block, data):
+    """
+    Mine a block based on the given last_block and data.
+    """
+
+
 class Block:
     """
     Block: a unit of sotrage
