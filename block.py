@@ -1,7 +1,16 @@
+import time
+
+
 def mine_block(last_block, data):
     """
     Mine a block based on the given last_block and data.
     """
+    timestamp = time.time_ns()
+    last_hash = last_block.hash
+    # Temporary hash
+    hash = f"{timestamp}-{last_hash}"
+
+    return Block(timestamp, last_hash, hash, data)
 
 
 class Block:
