@@ -43,8 +43,8 @@ class Block:
 
 
 def main():
-    genesis_block = genesis()
-    block = mine_block(genesis_block, "foo")
+    genesis_block = Block.genesis()
+    block = Block.mine_block(genesis_block, "foo")
     print(block)
 
 
