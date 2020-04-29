@@ -11,7 +11,9 @@ class Blockchain:
         self.chain = [genesis()]
 
     def add_block(self, data):
-        self.chain.append(Block(data))
+        # Use the last block to determine where to add the next block
+        last_block = self.chain[-1]
+        self.chain.append(mine_block(last_block, data))
 
     def __repr__(self):
         return f"Blockchain: {self.chain}"
