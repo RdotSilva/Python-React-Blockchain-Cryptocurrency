@@ -1,4 +1,4 @@
-from block import Block
+from block import Block, genesis, mine_block
 
 
 class Blockchain:
@@ -8,7 +8,7 @@ class Blockchain:
     """
 
     def __init__(self):
-        self.chain = []
+        self.chain = [genesis()]
 
     def add_block(self, data):
         self.chain.append(Block(data))
