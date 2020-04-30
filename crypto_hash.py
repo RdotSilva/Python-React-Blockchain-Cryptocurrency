@@ -1,15 +1,20 @@
 import hashlib
+import json
 
 
 def crypto_hash(data):
     """
     Return a sha-256 hash of the given data.
     """
-    return hashlib.sha256(data.encode("utf-8")).hexdigest()
+
+    # Turn the data into a string for use in the hash algo
+    stringified_data = json.dumps(data)
+
+    return hashlib.sha256(stringified_data.encode("utf-8")).hexdigest()
 
 
 def main():
-    print(f"crypto_hash('foo'): {crypto_hash('foo')}")
+    print(f"crypto_hash([2]): {crypto_hash([2])}")
 
 
 if __name__ == "__main__":
