@@ -2,15 +2,19 @@ import hashlib
 import json
 
 
+def stringify(data):
+    return json.dumps(data)
+
+
 def crypto_hash(*args):
     """
     Return a sha-256 hash of the given arguments.
     """
 
-    # Turn the data into a string for use in the hash algo
-    # stringified_data = json.dumps(data)
-    print(f"args: {args}")
-    joined_data = "".join(args)
+    stringified_args = map(stringify, args)
+
+    print(f"stringified_args : {stringified_args }")
+    joined_data = "".join(stringified_args)
 
     print(f"joined_data: {joined_data}")
 
@@ -18,7 +22,7 @@ def crypto_hash(*args):
 
 
 def main():
-    print(f"crypto_hash('one', 'two', 'three'): {crypto_hash('one', 'two', 'three')}")
+    print(f"crypto_hash('one', 2, [3]): {crypto_hash('one', 2, [3])}")
 
 
 if __name__ == "__main__":
