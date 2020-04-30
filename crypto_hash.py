@@ -5,7 +5,7 @@ def crypto_hash(data):
     """
     Return a sha-256 hash of the given data.
     """
-    return hashlib.sha256(data)
+    return hashlib.sha256(data.encode("utf-8")).hexdigest()
 
 
 def main():
