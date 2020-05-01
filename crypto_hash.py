@@ -11,7 +11,7 @@ def crypto_hash(*args):
     Return a sha-256 hash of the given arguments.
     """
 
-    stringified_args = map(stringify, args)
+    stringified_args = map(lambda data: json.dumps(data), args)
 
     print(f"stringified_args : {stringified_args }")
     joined_data = "".join(stringified_args)
