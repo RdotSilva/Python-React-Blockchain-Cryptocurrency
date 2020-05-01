@@ -5,6 +5,7 @@ Blockchain & Cryptocurrency built using Python. The backend will consist of a Fl
 ## Built With
 
 - Python 3.7
+- Pytest
 
 ## Screenshots
 
