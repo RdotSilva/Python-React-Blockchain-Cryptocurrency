@@ -2,10 +2,20 @@
 
 Blockchain & Cryptocurrency built using Python. The backend will consist of a Flask API, with a React frontend to display wallet information.
 
+### Unit Tests
+
+Unit tests are created using Pytest
+
+1. Run backend tests using this command
+
+```
+python -m pytest backend/tests
+```
+
 ## Built With
 
 - Python 3.7
-- Pytest
+- Pytest 5.4.1
 
 ## Screenshots
 
