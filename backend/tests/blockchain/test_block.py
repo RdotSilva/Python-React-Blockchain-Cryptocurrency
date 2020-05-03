@@ -17,8 +17,7 @@ def test_genesis():
     genesis = Block.genesis()
 
     assert isinstance(genesis, Block)
-    # Check all fields in genesis against the const fields
-    assert genesis.timestamp == GENESIS_DATA["timestamp"]
-    assert genesis.last_hash == GENESIS_DATA["last_hash"]
-    assert genesis.hash == GENESIS_DATA["hash"]
-    assert genesis.data == GENESIS_DATA["data"]
+
+    # Loop through the const genesis, and compare genesis data with the const data
+    for key, value in GENESIS_DATA.items():
+        getattr(genesis, key) == value
