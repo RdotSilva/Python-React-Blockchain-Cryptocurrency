@@ -48,6 +48,12 @@ class Block:
         nonce = 0
         hash = crypto_hash(timestamp, last_hash, data, difficulty, nonce)
 
+        # Generate a hash with the correct number of leading 0's
+        while hash[0:difficulty] != "0" * difficulty:
+            nonce += 1
+            timestamp = time.time_ns()
+            hash = crypto_hash(timestamp, last_hash, data, difficulty, nonce)
+
         return Block(timestamp, last_hash, hash, data, difficulty, nonce)
 
     @staticmethod
