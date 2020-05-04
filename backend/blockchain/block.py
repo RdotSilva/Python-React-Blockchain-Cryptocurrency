@@ -31,8 +31,9 @@ class Block:
             "Block("
             f"timestamp: {self.timestamp}, "
             f"last_hash: {self.last_hash}, "
-            f"hash: {self.hash},"
-            f"difficulty: {self.difficulty},"
+            f"hash: {self.hash}, "
+            f"data: {self.data}, "
+            f"difficulty: {self.difficulty}, "
             f"nonce: {self.nonce})"
         )
 
