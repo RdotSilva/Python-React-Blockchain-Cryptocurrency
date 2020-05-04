@@ -16,11 +16,13 @@ class Block:
     Store transactions in a blockchain that supports a cryptocurrency
     """
 
-    def __init__(self, timestamp, last_hash, hash, data):
+    def __init__(self, timestamp, last_hash, hash, data, difficulty, nonce):
         self.timestamp = timestamp
         self.last_hash = last_hash
         self.hash = hash
         self.data = data
+        self.difficulty = difficulty
+        self.nonce = nonce
 
     def __repr__(self):
         return (
