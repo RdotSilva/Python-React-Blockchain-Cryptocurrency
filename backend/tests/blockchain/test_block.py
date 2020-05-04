@@ -13,6 +13,16 @@ def test_mine_block():
     assert block.last_hash == last_block.hash
 
 
+def test_mine_block_leading_zeros():
+    # Set up a block
+    last_block = Block.genesis()
+    data = "test-data"
+    block = Block.mine_block(last_block, data)
+
+    # Check that the block hash has the correct number of leading zeros
+    assert block.hash[0 : block.difficulty] == "0" * block.difficulty
+
+
 def test_genesis():
     genesis = Block.genesis()
 
