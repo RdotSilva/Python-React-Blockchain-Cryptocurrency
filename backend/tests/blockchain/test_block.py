@@ -31,3 +31,11 @@ def test_genesis():
     # Loop through the const genesis, and compare genesis data with the const data
     for key, value in GENESIS_DATA.items():
         getattr(genesis, key) == value
+
+
+def test_quickly_mined_block():
+    # Mimic mined blocks that trigger a difficulty raise due to fast mining
+    last_block = Block.mine_block(Block.genesis(), "foo")
+    mined_block = Block.mine_block(last_block, "bar")
+
+    assert mined_block.difficulty == last_block.difficulty + 1
