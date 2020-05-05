@@ -1,6 +1,7 @@
 import time
 
 from backend.util.crypto_hash import crypto_hash
+from backend.config import MINE_RATE
 
 GENESIS_DATA = {
     "timestamp": 1,
@@ -70,6 +71,21 @@ class Block:
         # )
         # Instead of using above syntax use ** to unpack the entire dictionary
         return Block(**GENESIS_DATA)
+
+    @staticmethod
+    def adjust_difficulty(last_block, new_timestamp):
+        """
+        Calculate the adjusted difficulty according to the MINE_RATE constant.
+        Increase the difficulty for quickly mined blocks.
+        Decrease the difficulty for slowly mined blocks.
+        """
+        if (new_timestamp - last_block.timestamp) < MINE_RATE:
+            return last_block.difficulty + 1
+
+        if (last_block.difficulty - 1) > 0:
+            return last_block.difficulty - 1
+
+        return 1
 
 
 def main():
