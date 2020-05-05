@@ -1,4 +1,7 @@
+import time
+
 from backend.blockchain.block import Block, GENESIS_DATA
+from backend.config import MINE_RATE, SECONDS
 
 
 def test_mine_block():
@@ -39,3 +42,18 @@ def test_quickly_mined_block():
     mined_block = Block.mine_block(last_block, "bar")
 
     assert mined_block.difficulty == last_block.difficulty + 1
+
+
+def test_slowly_mined_block():
+    # Use to calculate mine_rate into seconds to use for sleep delay
+    DELAY = MINE_RATE / SECONDS
+
+    # Mimic mined blocks that trigger a difficulty lower due to slow mining
+    last_block = Block.mine_block(Block.genesis(), "foo")
+
+    # Create a delay in between mining blocks
+    time.sleep(DELAY)
+
+    mined_block = Block.mine_block(last_block, "bar")
+
+    assert mined_block.difficulty == last_block.difficulty - 1
