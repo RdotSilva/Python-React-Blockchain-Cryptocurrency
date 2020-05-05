@@ -46,7 +46,7 @@ class Block:
         """
         timestamp = time.time_ns()
         last_hash = last_block.hash
-        difficulty = last_block.difficulty
+        difficulty = Block.adjust_difficulty(last_block, timestamp)
         nonce = 0
         hash = crypto_hash(timestamp, last_hash, data, difficulty, nonce)
 
@@ -54,6 +54,7 @@ class Block:
         while hash[0:difficulty] != "0" * difficulty:
             nonce += 1
             timestamp = time.time_ns()
+            difficulty = Block.adjust_difficulty(last_block, timestamp)
             hash = crypto_hash(timestamp, last_hash, data, difficulty, nonce)
 
         return Block(timestamp, last_hash, hash, data, difficulty, nonce)
