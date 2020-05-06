@@ -29,8 +29,14 @@ def hex_to_binary(hex_string):
 
 def main():
     number = 451
-    hex_number = hex(number)
+
+    # Remove the leading 0 from hex
+    hex_number = hex(number)[2:]
     print(f"hex_number: {hex_number}")
+
+    # Convert hex to binary
+    binary_number = hex_to_binary(hex_number)
+    print(f"binary_number: {binary_number}")
 
 
 if __name__ == "__main__":
