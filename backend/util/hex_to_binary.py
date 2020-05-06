@@ -16,3 +16,12 @@ HEX_TO_BINARY_CONVERSION_TABLE = {
     "e": "1110",
     "f": "1111",
 }
+
+
+def hex_to_binary(hex_string):
+    binary_string = ""
+
+    for character in hex_string:
+        binary_string += HEX_TO_BINARY_CONVERSION_TABLE[character]
+
+    return binary_string
