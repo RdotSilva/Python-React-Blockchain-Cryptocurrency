@@ -1,3 +1,5 @@
+from backend.util.crypto_hash import crypto_hash
+
 HEX_TO_BINARY_CONVERSION_TABLE = {
     "0": "0000",
     "1": "0001",
@@ -37,6 +39,15 @@ def main():
     # Convert hex to binary
     binary_number = hex_to_binary(hex_number)
     print(f"binary_number: {binary_number}")
+
+    # Convert binary number back to original number
+    # 2 specifices that we are putting in a binary string
+    original_number = int(binary_number, 2)
+    print(f"original_number: {original_number}")
+
+    # Convert hex to a binary crypto hash
+    hex_to_binary_crypto_hash = hex_to_binary(crypto_hash("test-data"))
+    print(f"hex_to_binary_crypto_hash: {hex_to_binary_crypto_hash}")
 
 
 if __name__ == "__main__":
