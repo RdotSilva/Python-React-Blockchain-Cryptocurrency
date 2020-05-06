@@ -25,3 +25,13 @@ def hex_to_binary(hex_string):
         binary_string += HEX_TO_BINARY_CONVERSION_TABLE[character]
 
     return binary_string
+
+
+def main():
+    number = 451
+    hex_number = hex(number)
+    print(f"hex_number: {hex_number}")
+
+
+if __name__ == "__main__":
+    main()
