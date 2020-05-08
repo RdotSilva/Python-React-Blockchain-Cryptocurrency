@@ -123,8 +123,11 @@ class Block:
 
 def main():
     genesis_block = Block.genesis()
-    block = Block.mine_block(genesis_block, "foo")
-    print(block)
+    # Set up a block and tamper with the hash to rest validation
+    bad_block = Block.mine_block(Block.genesis(), "foo")
+    bad_block.last_hash = "evil_data"
+
+    Block.is_valid_block(genesis_block, bad_block)
 
 
 if __name__ == "__main__":
