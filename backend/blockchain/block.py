@@ -99,6 +99,8 @@ class Block:
         3. The difficulty must only adjust by 1
         4. The block hash must be a valid combination of the block fields
         """
+        if block.last_hash != last_block.hash:
+            raise Exception("The block last_hash must be correct")
 
 
 def main():
