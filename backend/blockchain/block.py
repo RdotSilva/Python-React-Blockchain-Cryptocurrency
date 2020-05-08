@@ -109,12 +109,7 @@ class Block:
             raise Exception("The block difficulty must only adjust by 1")
 
         reconstructed_hash = crypto_hash(
-            block.timestamp,
-            block.last_hash,
-            block.hash,
-            block.data,
-            block.nonce,
-            block.difficulty,
+            block.timestamp, block.last_hash, block.data, block.nonce, block.difficulty,
         )
 
         if block.hash != reconstructed_hash:
@@ -127,7 +122,10 @@ def main():
     bad_block = Block.mine_block(Block.genesis(), "foo")
     bad_block.last_hash = "evil_data"
 
-    Block.is_valid_block(genesis_block, bad_block)
+    try:
+        Block.is_valid_block(genesis_block, bad_block)
+    except Exception as e:
+        print(f"is_valid_block: {e}")
 
 
 if __name__ == "__main__":
