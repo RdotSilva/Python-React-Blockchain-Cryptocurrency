@@ -71,9 +71,14 @@ def test_mine_block_difficulty_limits_at_1():
     assert mined_block.difficulty == 1
 
 
-@pytest.fixture()
+@pytest.fixture
 def last_block():
     return Block.genesis()
+
+
+@pytest.fixture
+def block(last_block):
+    return Block.mine_block(last_block, "test_data")
 
 
 def test_is_valid_block():
