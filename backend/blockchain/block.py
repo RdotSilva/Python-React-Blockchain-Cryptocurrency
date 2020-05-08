@@ -90,6 +90,16 @@ class Block:
 
         return 1
 
+    @staticmethod
+    def is_valid_block(last_block, block):
+        """
+        Validate block by enforcing the following rules:
+        1. The block must have the proper last_hash reference
+        2. The block must meet the proof of work requirement
+        3. The difficulty must only adjust by 1
+        4. The block hash must be a valid combination of the block fields
+        """
+
 
 def main():
     genesis_block = Block.genesis()
