@@ -102,3 +102,14 @@ def test_is_valid_block_bad_proof_of_work(last_block, block):
     # Expecting an exception to be thrown with exact match for exception message
     with pytest.raises(Exception, match="proof of work requirement was not met"):
         Block.is_valid_block(last_block, block)
+
+
+def test_is_valid_block_jumped_difficulty(last_block, block):
+    jumped_difficulty = 10
+    block.difficulty = jumped_difficulty
+    # Set the hash to have correct amount of leading zeros with the increased difficulty
+    block.hash = f'{"0" * jumped_difficulty}111abc'
+
+    # Expecting an exception to be thrown with exact match for exception message
+    with pytest.raises(Exception, match="difficulty must only adjust by 1"):
+        Block.is_valid_block(last_block, block)
