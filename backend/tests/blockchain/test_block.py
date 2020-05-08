@@ -71,6 +71,11 @@ def test_mine_block_difficulty_limits_at_1():
     assert mined_block.difficulty == 1
 
 
+@pytest.fixture()
+def last_block():
+    return Block.genesis()
+
+
 def test_is_valid_block():
     # The test will pass as long is it does not raise an exception
     last_block = Block.genesis()
