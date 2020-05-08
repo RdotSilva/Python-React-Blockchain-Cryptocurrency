@@ -108,6 +108,18 @@ class Block:
         if abs(last_block.difficulty - block.difficulty) > 1:
             raise Exception("The block difficulty must only adjust by 1")
 
+        reconstructed_hash = crypto_hash(
+            block.timestamp,
+            block.last_hash,
+            block.hash,
+            block.data,
+            block.nonce,
+            block.difficulty,
+        )
+
+        if block.hash != reconstructed_hash:
+            raise Exception("The block has must be correct")
+
 
 def main():
     genesis_block = Block.genesis()
