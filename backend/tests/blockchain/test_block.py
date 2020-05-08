@@ -68,3 +68,6 @@ def test_mine_block_difficulty_limits_at_1():
     mined_block = Block.mine_block(last_block, "bar")
 
     assert mined_block.difficulty == 1
+
+
+# TODO: Add a test that will check that a block that has not been tampered with will validate properly
