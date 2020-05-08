@@ -81,16 +81,12 @@ def block(last_block):
     return Block.mine_block(last_block, "test_data")
 
 
-def test_is_valid_block():
+def test_is_valid_block(last_block, block):
     # The test will pass as long is it does not raise an exception
-    last_block = Block.genesis()
-    block = Block.mine_block(last_block, "test_data")
     Block.is_valid_block(last_block, block)
 
 
-def test_is_valid_block_bad_last_hash():
-    last_block = Block.genesis()
-    block = Block.mine_block(last_block, "test_data")
+def test_is_valid_block_bad_last_hash(last_block, block):
     # Edit the last_hash data to manually trigger bad data
     block.last_hash = "evil_last_hash"
 
