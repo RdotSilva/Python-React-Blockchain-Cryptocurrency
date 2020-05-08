@@ -113,3 +113,12 @@ def test_is_valid_block_jumped_difficulty(last_block, block):
     # Expecting an exception to be thrown with exact match for exception message
     with pytest.raises(Exception, match="difficulty must only adjust by 1"):
         Block.is_valid_block(last_block, block)
+
+
+def test_is_valid_block_bad_block_hash(last_block, block):
+    # Change the hash in a sneak way adding leading zeros to trick proof of work requirement
+    block.hash = "00000000000000000000bbbabc"
+
+    # Expecting an exception to be thrown with exact match for exception message
+    with pytest.raises(Exception, match="block hash must be correct"):
+        Block.is_valid_block(last_block, block)
