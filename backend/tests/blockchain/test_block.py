@@ -70,4 +70,8 @@ def test_mine_block_difficulty_limits_at_1():
     assert mined_block.difficulty == 1
 
 
-# TODO: Add a test that will check that a block that has not been tampered with will validate properly
+def test_is_valid_block():
+    # The test will pass as long is it does not raise an exception
+    last_block = Block.genesis()
+    block = Block.mine_block(last_block, "test_data")
+    Block.is_valid_block(last_block, block)
