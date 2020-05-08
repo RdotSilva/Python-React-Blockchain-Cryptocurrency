@@ -113,7 +113,7 @@ class Block:
         )
 
         if block.hash != reconstructed_hash:
-            raise Exception("The block has must be correct")
+            raise Exception("The block hash must be correct")
 
 
 def main():
