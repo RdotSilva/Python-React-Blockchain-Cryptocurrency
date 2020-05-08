@@ -93,3 +93,12 @@ def test_is_valid_block_bad_last_hash(last_block, block):
     # Expecting an exception to be thrown with exact match for exception message
     with pytest.raises(Exception, match="last_hash must be correct"):
         Block.is_valid_block(last_block, block)
+
+
+def test_is_valid_block_bad_proof_of_work(last_block, block):
+    # Edit the hash to manually trigger bad data
+    block.hash = "fff"
+
+    # Expecting an exception to be thrown with exact match for exception message
+    with pytest.raises(Exception, match="proof of work requirement was not met"):
+        Block.is_valid_block(last_block, block)
