@@ -46,8 +46,7 @@ def test_is_valid_chain_bad_genesis():
     blockchain.chain[0].hash = "evil_hash"
 
     with pytest.raises(Exception, match="genesis block must be valid"):
-        Blockchain.is_valid_chain(blockchain)
+        Blockchain.is_valid_chain(blockchain.chain)
 
 
 # TODO last test is not passing. Double check test to make sure correct, if not go and fix code. Also look at pytest.fixture and try to get three blocks to work
-
