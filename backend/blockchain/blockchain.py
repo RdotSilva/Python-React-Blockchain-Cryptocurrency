@@ -26,6 +26,10 @@ class Blockchain:
         1. The chain must start with the genesis block.
         2. Blocks must be formatted correctly
         """
+        for i in range(1, len(chain)):
+            block = chain[i]
+            last_block = chain[i - 1]
+            Block.is_valid_block(last_block, block)
 
 
 def main():
