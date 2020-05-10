@@ -35,3 +35,15 @@ def test_is_valid_chain():
         blockchain.add_block(i)
 
     Blockchain.is_valid_chain(blockchain.chain)
+
+
+def test_is_valid_chain_bad_genesis():
+    blockchain = Blockchain()
+
+    for i in range(3):
+        blockchain.add_block(i)
+
+    blockchain.chain[0].hash = "evil_hash"
+
+    with pytest.raises(Exception, match="genesis block must be valid"):
+        Blockchain.is_valid_chain(blockchain)
