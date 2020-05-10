@@ -18,12 +18,16 @@ def test_add_block():
     assert blockchain.chain[-1].data == data
 
 
-def test_is_valid_chain():
-    # Test will pass if no exceptions raised
+@pytest.fixture
+def blockchain_three_blocks():
     blockchain = Blockchain()
-
     # Add 3 blocks to the blockchain instance
     for i in range(3):
         blockchain.add_block(i)
+    return blockchain
+
+
+def test_is_valid_chain():
+    # Test will pass if no exceptions raised
 
     Blockchain.is_valid_chain(blockchain.chain)
