@@ -20,33 +20,20 @@ def test_add_block():
     assert blockchain.chain[-1].data == data
 
 
-# @pytest.fixture
-# def blockchain_three_blocks():
-#     blockchain = Blockchain()
-#     for i in range(3):
-#         blockchain.add_block(i)
-#     return blockchain
-
-
-def test_is_valid_chain():
+@pytest.fixture
+def blockchain_three_blocks():
     blockchain = Blockchain()
-
     for i in range(3):
         blockchain.add_block(i)
+    return blockchain
 
-    Blockchain.is_valid_chain(blockchain.chain)
+
+def test_is_valid_chain(blockchain_three_blocks):
+    Blockchain.is_valid_chain(blockchain_three_blocks.chain)
 
 
-def test_is_valid_chain_bad_genesis():
-    blockchain = Blockchain()
-
-    for i in range(3):
-        blockchain.add_block(i)
-
-    blockchain.chain[0].hash = "evil_hash"
+def test_is_valid_chain_bad_genesis(blockchain_three_blocks):
+    blockchain_three_blocks.chain[0].hash = "evil_hash"
 
     with pytest.raises(Exception, match="genesis block must be valid"):
-        Blockchain.is_valid_chain(blockchain.chain)
-
-
-# TODO last test is not passing. Double check test to make sure correct, if not go and fix code. Also look at pytest.fixture and try to get three blocks to work
+        Blockchain.is_valid_chain(blockchain_three_blocks.chain)
