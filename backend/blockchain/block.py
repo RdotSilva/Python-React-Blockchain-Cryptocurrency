@@ -39,6 +39,10 @@ class Block:
             f"nonce: {self.nonce})"
         )
 
+    def __eq__(self, other):
+        # Changing default equality comparison from object comparison to dictionary comparison
+        return self.__dict__ == other.__dict__
+
     @staticmethod
     def mine_block(last_block, data):
         """
