@@ -18,6 +18,15 @@ class Blockchain:
     def __repr__(self):
         return f"Blockchain: {self.chain}"
 
+    @staticmethod
+    def is_valid_chain(chain):
+        """
+        Validate the incoming chain.
+        Enforce the following rules of the blockchain:
+        1. The chain must start with the genesis block.
+        2. Blocks must be formatted correctly
+        """
+
 
 def main():
     blockchain = Blockchain()
