@@ -1,3 +1,5 @@
+import pytest
+
 from backend.blockchain.blockchain import Blockchain
 from backend.blockchain.block import GENESIS_DATA
 
@@ -18,15 +20,18 @@ def test_add_block():
     assert blockchain.chain[-1].data == data
 
 
-@pytest.fixture
-def blockchain_three_blocks():
+# @pytest.fixture
+# def blockchain_three_blocks():
+#     blockchain = Blockchain()
+#     for i in range(3):
+#         blockchain.add_block(i)
+#     return blockchain
+
+
+def test_is_valid_chain():
     blockchain = Blockchain()
-    # Add 3 blocks to the blockchain instance
+
     for i in range(3):
         blockchain.add_block(i)
-    return blockchain
 
-
-def test_is_valid_chain(blockchain_three_blocks):
-    # Test will pass if no exceptions raised
-    Blockchain.is_valid_chain(blockchain_three_blocks)
+    Blockchain.is_valid_chain(blockchain.chain)
