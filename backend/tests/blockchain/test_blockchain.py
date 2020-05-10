@@ -27,7 +27,6 @@ def blockchain_three_blocks():
     return blockchain
 
 
-def test_is_valid_chain():
+def test_is_valid_chain(blockchain_three_blocks):
     # Test will pass if no exceptions raised
-
-    Blockchain.is_valid_chain(blockchain.chain)
+    Blockchain.is_valid_chain(blockchain_three_blocks)
