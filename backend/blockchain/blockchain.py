@@ -35,6 +35,12 @@ class Blockchain:
         # If the above checks pass, new chain to the old chain spot
         self.chain = chain
 
+    def to_json(self):
+        """
+        Serialize the blockchain into a list of blocks.
+        """
+        return self.chain
+
     @staticmethod
     def is_valid_chain(chain):
         """
