@@ -39,6 +39,7 @@ class Blockchain:
         """
         Serialize the blockchain into a list of blocks.
         """
+        # TODO: Update to handle new block.to_json method. Create a serialized chained and return it.
         return self.chain
 
     @staticmethod
