@@ -39,8 +39,12 @@ class Blockchain:
         """
         Serialize the blockchain into a list of blocks.
         """
-        # TODO: Update to handle new block.to_json method. Create a serialized chained and return it.
-        return self.chain
+        serialized_chain = []
+
+        for block in self.chain:
+            serialized_chain.append(block.to_json())
+
+        return serialized_chain
 
     @staticmethod
     def is_valid_chain(chain):
