@@ -13,3 +13,11 @@ pubnub = PubNub(pnconfig)
 TEST_CHANNEL = "TEST_CHANNEL"
 
 pubnub.subscribe().channels([TEST_CHANNEL]).execute()
+
+
+def main():
+    pubnub.publish().channel(TEST_CHANNEL).message({"foo": "bar"}).sync()
+
+
+if __name__ == "__main__":
+    main()
