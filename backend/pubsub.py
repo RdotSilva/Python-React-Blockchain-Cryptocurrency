@@ -26,6 +26,15 @@ class Listener(SubscribeCallback):
 pubnub.add_listener(Listener())
 
 
+class PubSub:
+    """
+    Handles the publish/subscribe layer of the application.
+    Provides communication between the nodes of the blockchain network.
+    """
+
+    # TODO: Move methods into PubSub class
+
+
 def main():
     # Add temporary sleep to avoid race condition between publish and subscribe
     time.sleep(1)
