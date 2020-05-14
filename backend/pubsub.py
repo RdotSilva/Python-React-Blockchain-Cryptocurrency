@@ -9,3 +9,7 @@ pnconfig = PNConfiguration()
 pnconfig.subscribe_key = SUBSCRIBE_KEY
 pconfig.publish_key = PUBLISH_KEY
 pubnub = PubNub(pnconfig)
+
+TEST_CHANNEL = "TEST_CHANNEL"
+
+pubnub.subscribe().channels([TEST_CHANNEL]).execute()
