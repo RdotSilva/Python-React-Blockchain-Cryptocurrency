@@ -1,3 +1,5 @@
+import time
+
 from pubnub.pubnub import PubNub
 from pubnub.pnconfiguration import PNConfiguration
 from pubnub.callbacks import SubscribeCallback
@@ -25,6 +27,8 @@ pubnub.add_listener(Listener())
 
 
 def main():
+    # Add temporary sleep to avoid race condition between publish and subscribe
+    time.sleep(1)
     pubnub.publish().channel(TEST_CHANNEL).message({"foo": "bar"}).sync()
 
 
