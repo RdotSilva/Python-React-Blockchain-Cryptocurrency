@@ -40,6 +40,12 @@ class PubSub:
         """
         self.pubnub.publish().channel(channel).message(message).sync()
 
+    def broadcast_block(self, block):
+        """
+        Broadcast a block object to all nodes.
+        """
+        self.publish(CHANNELS["BLOCK"], block.to_json())
+
 
 def main():
     pubsub = PubSub()
