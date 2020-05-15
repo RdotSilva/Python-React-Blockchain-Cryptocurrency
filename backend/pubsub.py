@@ -31,11 +31,17 @@ class PubSub:
         self.pubnub.subscribe().channels([TEST_CHANNEL]).execute()
         pubnub.add_listener(Listener())
 
+    def publish(self, channel, message):
+        """
+        Publish the message object to the channel.
+
+        """
+        self.pubnub.publish().channel(channel).message(message).sync()
+
 
 def main():
     # Add temporary sleep to avoid race condition between publish and subscribe
     time.sleep(1)
-    pubnub.publish().channel(TEST_CHANNEL).message({"foo": "bar"}).sync()
 
 
 if __name__ == "__main__":
