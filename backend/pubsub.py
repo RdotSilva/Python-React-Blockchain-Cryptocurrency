@@ -30,7 +30,7 @@ class PubSub:
 
     def __init__(self):
         self.pubnub = pubnub = PubNub(pnconfig)
-        self.pubnub.subscribe().channels([CHANNELS.values()]).execute()
+        self.pubnub.subscribe().channels(CHANNELS.values()).execute()
         pubnub.add_listener(Listener())
 
     def publish(self, channel, message):
