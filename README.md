@@ -18,6 +18,14 @@ Run the python script command in terminal to start the Flask server
 python -m backend.app
 ```
 
+## Run a peer instance
+
+Run the python script command in terminal to run a peer instance
+
+```
+export PEER=True && python -m backend.app
+```
+
 ### Unit Tests
 
 Unit tests are created using Pytest
