@@ -17,7 +17,9 @@ TEST_CHANNEL = "TEST_CHANNEL"
 
 class Listener(SubscribeCallback):
     def message(self, pubnub, message_object):
-        print(f"\n-- Incoming message_object: {message_object}")
+        print(
+            f"\n-- Channel: {message_object.channel} | Message: {message_object.message}"
+        )
 
 
 class PubSub:
