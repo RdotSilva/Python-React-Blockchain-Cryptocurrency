@@ -16,6 +16,9 @@ CHANNELS = {"TEST": "TEST", "BLOCK": "BLOCK"}
 
 
 class Listener(SubscribeCallback):
+    def __init__(self, blockchain):
+        self.blockchain = blockchain
+
     def message(self, pubnub, message_object):
         print(
             f"\n-- Channel: {message_object.channel} | Message: {message_object.message}"
@@ -31,7 +34,7 @@ class PubSub:
     def __init__(self):
         self.pubnub = pubnub = PubNub(pnconfig)
         self.pubnub.subscribe().channels(CHANNELS.values()).execute()
-        pubnub.add_listener(Listener())
+        pubnub.add_listener(Listener(blockchain))
 
     def publish(self, channel, message):
         """
