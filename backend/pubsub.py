@@ -13,6 +13,9 @@ pnconfig.subscribe_key = SUBSCRIBE_KEY
 pnconfig.publish_key = PUBLISH_KEY
 
 TEST_CHANNEL = "TEST_CHANNEL"
+BLOCK_CHANNEL = "BLOCK_CHANNEL"
+
+CHANNELS = {"TEST": "TEST", "BLOCK": "BLOCK"}
 
 
 class Listener(SubscribeCallback):
@@ -30,7 +33,7 @@ class PubSub:
 
     def __init__(self):
         self.pubnub = pubnub = PubNub(pnconfig)
-        self.pubnub.subscribe().channels([TEST_CHANNEL]).execute()
+        self.pubnub.subscribe().channels([CHANNELS.values()]).execute()
         pubnub.add_listener(Listener())
 
     def publish(self, channel, message):
