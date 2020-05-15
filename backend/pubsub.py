@@ -12,9 +12,6 @@ pnconfig = PNConfiguration()
 pnconfig.subscribe_key = SUBSCRIBE_KEY
 pnconfig.publish_key = PUBLISH_KEY
 
-TEST_CHANNEL = "TEST_CHANNEL"
-BLOCK_CHANNEL = "BLOCK_CHANNEL"
-
 CHANNELS = {"TEST": "TEST", "BLOCK": "BLOCK"}
 
 
@@ -50,7 +47,7 @@ def main():
     # Add temporary sleep to avoid race condition between publish and subscribe
     time.sleep(1)
 
-    pubsub.publish(TEST_CHANNEL, {"foo": "bar"})
+    pubsub.publish(CHANNELS["TEST"], {"foo": "bar"})
 
 
 if __name__ == "__main__":
