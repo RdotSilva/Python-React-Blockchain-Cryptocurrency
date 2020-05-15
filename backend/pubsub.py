@@ -11,19 +11,13 @@ from config import PUBLISH_KEY, SUBSCRIBE_KEY
 pnconfig = PNConfiguration()
 pnconfig.subscribe_key = SUBSCRIBE_KEY
 pnconfig.publish_key = PUBLISH_KEY
-pubnub = PubNub(pnconfig)
 
 TEST_CHANNEL = "TEST_CHANNEL"
-
-pubnub.subscribe().channels([TEST_CHANNEL]).execute()
 
 
 class Listener(SubscribeCallback):
     def message(self, pubnub, message_object):
         print(f"\n-- Incoming message_object: {message_object}")
-
-
-pubnub.add_listener(Listener())
 
 
 class PubSub:
@@ -32,7 +26,10 @@ class PubSub:
     Provides communication between the nodes of the blockchain network.
     """
 
-    # TODO: Move methods into PubSub class
+    def __init__(self):
+        self.pubnub = pubnub = PubNub(pnconfig)
+        self.pubnub.subscribe().channels([TEST_CHANNEL]).execute()
+        pubnub.add_listener(Listener())
 
 
 def main():
