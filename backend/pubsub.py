@@ -40,8 +40,12 @@ class PubSub:
 
 
 def main():
+    pubsub = PubSub()
+
     # Add temporary sleep to avoid race condition between publish and subscribe
     time.sleep(1)
+
+    pubsub.publish(TEST_CHANNEL, {"foo": "bar"})
 
 
 if __name__ == "__main__":
