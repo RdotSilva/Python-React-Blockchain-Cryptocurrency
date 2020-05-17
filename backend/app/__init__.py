@@ -1,4 +1,5 @@
 import os
+import requests
 import random
 
 from flask import Flask, jsonify
@@ -33,11 +34,16 @@ def route_blockchain_mine():
     return jsonify(block.to_json())
 
 
-PORT = 5000
+ROOT_PORT = 5000
+PORT = ROOT_PORT
 
 # If PEER env var is found create a random port
 if os.environ.get("PEER") == "True":
     PORT = random.randint(5001, 6000)
+
+    result = requests.get(f"http://localhost:{ROOT_PORT}/blockchain")
+    print(f"result: {result}")
+    # TODO: Fix OSError (WinError 10013)
 
 
 app.run(port=PORT)
