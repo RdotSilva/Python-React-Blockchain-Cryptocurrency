@@ -24,6 +24,17 @@ class Listener(SubscribeCallback):
             f"\n-- Channel: {message_object.channel} | Message: {message_object.message}"
         )
 
+        if message_object.channel == CHANNELS["BLOCK"]:
+            block = message_object.message
+            potential_chain = self.blockchain.chain[:]
+            potential_chain.append(block)
+
+            try:
+                self.blockchain.replace_chain(potential_chain)
+                print("\n -- Successfully replaced the local chai")
+            except Exception as e:
+                print(f"\n -- Did not replace chain: {e}")
+
 
 class PubSub:
     """
