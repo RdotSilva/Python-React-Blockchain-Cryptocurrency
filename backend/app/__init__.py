@@ -8,8 +8,7 @@ from backend.pubsub import PubSub
 
 app = Flask(__name__)
 blockchain = Blockchain()
-pubsub = PubSub()
-# TODO: Update pubsub to handle a blockchain
+pubsub = PubSub(blockchain)
 
 
 @app.route("/")
