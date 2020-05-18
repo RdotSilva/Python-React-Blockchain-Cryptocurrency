@@ -42,8 +42,7 @@ if os.environ.get("PEER") == "True":
     PORT = random.randint(5001, 6000)
 
     result = requests.get(f"http://localhost:{ROOT_PORT}/blockchain")
-    print(f"result: {result}")
-    # TODO: Fix OSError (WinError 10013)
+    print(f"result.json(): {result.json()}")
 
 
 app.run(port=PORT)
