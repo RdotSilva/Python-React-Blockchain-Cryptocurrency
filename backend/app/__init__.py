@@ -17,6 +17,11 @@ def route_default():
     return "Welcome to the blockchain"
 
 
+@app.route("/about")
+def route_about():
+    return "This is a blockchain network."
+
+
 @app.route("/blockchain")
 def route_blockchain():
     return jsonify(blockchain.to_json())
