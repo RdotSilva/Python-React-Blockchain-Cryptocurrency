@@ -42,6 +42,10 @@ python -m pytest backend/tests
 - Flask 1.1
 - Pytest 5.4.1
 
+## APIs Used
+
+- PubNub - https://www.pubnub.com/
+
 ## Screenshots
 
 ![Coming Soon](https://upload.wikimedia.org/wikipedia/commons/8/80/Comingsoon.png "Coming Soon")
