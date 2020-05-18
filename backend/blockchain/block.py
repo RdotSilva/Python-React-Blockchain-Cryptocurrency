@@ -76,13 +76,6 @@ class Block:
         """
         Generate the genesis block.
         """
-        # return Block(
-        #     timestamp=GENESIS_DATA["timestamp"],
-        #     last_hash=GENESIS_DATA["last_hash"],
-        #     hash=GENESIS_DATA["hash"],
-        #     data=GENESIS_DATA["data"],
-        # )
-        # Instead of using above syntax use ** to unpack the entire dictionary
         return Block(**GENESIS_DATA)
 
     @staticmethod
