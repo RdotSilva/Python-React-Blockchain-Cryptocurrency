@@ -15,3 +15,12 @@ class Wallet:
         self.address = str(uuid.uuid4())[0:8]
         self.private_key = ec.generate_private_key(ec.SECP256K1(), default_backend())
         self.public_key = self.private_key.public_key()
+
+
+def main():
+    wallet = Wallet()
+    print(f"Wallet.__dict__: {wallet.__dict__}")
+
+
+if __name__ == "__main__":
+    main()
