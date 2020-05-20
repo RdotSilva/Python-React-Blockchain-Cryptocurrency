@@ -50,6 +50,9 @@ def main():
     signature = wallet.sign(data)
     print(f"Signature: {signature}")
 
+    should_be_valid = Wallet.verify(wallet.public_key, data, signature)
+    print(f"should_be_valid: {should_be_valid}")
+
 
 if __name__ == "__main__":
     main()
