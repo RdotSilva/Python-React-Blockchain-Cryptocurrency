@@ -2,6 +2,7 @@ import uuid
 from backend.config import STARTING_BALANCE
 from cryptography.hazmat.backends import default_backend
 from cryptography.hazmat.primitives.asymmetric import ec
+from cryptography.hazmat.primitives import hashes
 
 
 class Wallet:
@@ -16,6 +17,12 @@ class Wallet:
         self.balance = STARTING_BALANCE
         self.private_key = ec.generate_private_key(ec.SECP256K1(), default_backend())
         self.public_key = self.private_key.public_key()
+
+    def sign(self, data):
+        """
+        Generate a signature based on the data using the local private key.
+        """
+        return self.private_key.sign(data, ec.ECDSA(hashes.SHA256()))
 
 
 def main():
