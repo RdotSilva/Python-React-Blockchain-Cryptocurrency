@@ -1,3 +1,4 @@
+import json
 import uuid
 from backend.config import STARTING_BALANCE
 from cryptography.hazmat.backends import default_backend
@@ -22,7 +23,9 @@ class Wallet:
         """
         Generate a signature based on the data using the local private key.
         """
-        return self.private_key.sign(data, ec.ECDSA(hashes.SHA256()))
+        return self.private_key.sign(
+            json.dumps(data).encode("utf-8"), ec.ECDSA(hashes.SHA256())
+        )
 
 
 def main():
