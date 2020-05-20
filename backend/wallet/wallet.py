@@ -29,6 +29,10 @@ def main():
     wallet = Wallet()
     print(f"Wallet.__dict__: {wallet.__dict__}")
 
+    data = {"foo": "bar"}
+    signature = wallet.sign(data)
+    print(f"Signature: {signature}")
+
 
 if __name__ == "__main__":
     main()
