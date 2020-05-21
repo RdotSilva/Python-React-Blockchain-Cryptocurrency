@@ -14,6 +14,9 @@ class Transaction:
         """
         Structure the output data for the transaction.
         """
+
+        # TODO: Write logic for edgecase if amount exceeds the amount that current sender_wallet owns
+
         output = {}
         output[recipient] = amount
         output[sender_wallet.address] = sender_wallet.balance - amount
