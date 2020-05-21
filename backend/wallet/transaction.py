@@ -9,3 +9,13 @@ class Transaction:
     def __init__(self, sender_wallet, recipient, amount):
         self.id = str(uuid.uuid4())[0:8]
         self.output = self.create_output(sender_wallet, recipient, amount)
+
+    def create_output(self, sender_wallet, recipient, amount):
+        """
+        Structure the output data for the transaction.
+        """
+        output = {}
+        output[recipient] = amount
+        output[sender_wallet.address] = sender_wallet.balance - amount
+
+        return output
