@@ -1,4 +1,5 @@
 import uuid
+import time
 
 
 class Transaction:
@@ -24,3 +25,16 @@ class Transaction:
         output[sender_wallet.address] = sender_wallet.balance - amount
 
         return output
+
+    def create_input(self, sender_wallet, output):
+        """
+        Structure the input data for the transaction.
+        Sign the transaction and include the sender's public key and address.
+        """
+        return {
+            "timestamp": time.time_ns(),
+            "amount": sender_wallet.balance,
+            "address": sender_wallet.address,
+            "public_key": sender_wallet.public_key,
+            "signature": sender_wallet.sign(output),
+        }
