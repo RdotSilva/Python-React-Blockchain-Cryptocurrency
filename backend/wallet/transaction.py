@@ -15,7 +15,8 @@ class Transaction:
         Structure the output data for the transaction.
         """
 
-        # TODO: Write logic for edgecase if amount exceeds the amount that current sender_wallet owns
+        if amount > sender_wallet.balance:
+            raise Exception("Amount exceeds balance")
 
         output = {}
         output[recipient] = amount
