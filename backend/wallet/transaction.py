@@ -2,6 +2,9 @@ import uuid
 import time
 
 
+from backend.wallet.wallet import Wallet
+
+
 class Transaction:
     """
     Document an exchange in currency from a sender to one of more recipients.
@@ -38,3 +41,12 @@ class Transaction:
             "public_key": sender_wallet.public_key,
             "signature": sender_wallet.sign(output),
         }
+
+
+def main():
+    transaction = Transaction(Wallet(), "recipient", 15)
+    print(f"transaction.__dict__: {transaction.__dict__}")
+
+
+if __name__ == "__main__":
+    main()
