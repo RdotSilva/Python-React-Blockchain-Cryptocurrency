@@ -59,4 +59,18 @@ def test_transaction_update():
         transaction.input["signature"],
     )
 
-    # TODO: Add an update that sends currency to the FIRST recipient
+    to_first_again_amount = 25
+    transaction.update(sender_wallet, first_recipient, to_first_again_amount)
+
+    assert transaction.output[first_recipient] == first_amount + to_first_again_amount
+
+    assert (
+        transaction.output[sender_wallet.address]
+        == sender_wallet.balance - first_amount - next_amount - to_first_again_amount
+    )
+
+    assert Wallet.verify(
+        transaction.input["public_key"],
+        transaction.output,
+        transaction.input["signature"],
+    )
