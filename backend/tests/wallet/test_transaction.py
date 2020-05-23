@@ -74,3 +74,7 @@ def test_transaction_update():
         transaction.output,
         transaction.input["signature"],
     )
+
+
+def test_valid_transaction():
+    Transaction.is_valid_transaction(Transaction(Wallet(), "recipient", 50))
