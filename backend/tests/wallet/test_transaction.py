@@ -58,3 +58,5 @@ def test_transaction_update():
         transaction.output,
         transaction.input["signature"],
     )
+
+    # TODO: Add an update that sends currency to the FIRST recipient
