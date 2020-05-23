@@ -78,3 +78,12 @@ def test_transaction_update():
 
 def test_valid_transaction():
     Transaction.is_valid_transaction(Transaction(Wallet(), "recipient", 50))
+
+
+def test_valid_transaction_with_invalid_outputs():
+    sender_wallet = Wallet()
+    transaction = Transaction(sender_wallet, "recipient", 50)
+    transaction.output[sender_wallet.address] = 9001
+
+    with pytest.raises(Exception, match="Invalid transaction putput values"):
+        Transaction.is_valid_transaction(transaction)
