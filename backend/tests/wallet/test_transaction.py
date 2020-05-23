@@ -27,3 +27,11 @@ def test_transaction():
 def test_transaction_exceeds_balance():
     with pytest.raises(Exception, match="Amount exceeds balance"):
         Transaction(Wallet(), "recipient", 9001)
+
+
+def test_transaction_update_exceeds_balance():
+    sender_wallet = Wallet()
+    transaction = Transaction(sender_wallet, "recipient", 50)
+
+    with pytest.raises(Exception, match="Amount exceeds balance"):
+        transaction.update(sender_wallet, "new_recipient", 9001)
