@@ -22,6 +22,8 @@ python -m backend.app
 
 Run the python script command in terminal to run a peer instance
 
+(This is mainly used for testing. Allows you to create a peer instance and test blockchain updates.)
+
 ```
 export PEER=True && python -m backend.app
 ```
