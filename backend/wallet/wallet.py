@@ -43,8 +43,12 @@ class Wallet:
         """
         Verify a signature based on the original publickey and data.
         """
+
+        deserialized_public_key = serialization.load_pem_public_key(
+            public_key.encode("utf-8"), default_backend()
+        )
         try:
-            public_key.verify(
+            deserialized_public_key.verify(
                 signature, json.dumps(data).encode("utf-8"), ec.ECDSA(hashes.SHA256())
             )
             return True
