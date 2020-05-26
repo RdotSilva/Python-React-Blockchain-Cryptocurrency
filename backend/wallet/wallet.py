@@ -53,9 +53,13 @@ class Wallet:
         deserialized_public_key = serialization.load_pem_public_key(
             public_key.encode("utf-8"), default_backend()
         )
+
+        # Unpack the signature
+        (r, s) = signature
+
         try:
             deserialized_public_key.verify(
-                signature.encode("utf-8"),
+                encode_dss_signature(r, s),
                 json.dumps(data).encode("utf-8"),
                 ec.ECDSA(hashes.SHA256()),
             )
