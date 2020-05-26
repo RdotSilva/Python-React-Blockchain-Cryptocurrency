@@ -27,7 +27,7 @@ class Wallet:
         """
         return self.private_key.sign(
             json.dumps(data).encode("utf-8"), ec.ECDSA(hashes.SHA256())
-        )
+        ).decode("utf-8")
 
     def serialize_public_key(self):
         """
@@ -49,7 +49,9 @@ class Wallet:
         )
         try:
             deserialized_public_key.verify(
-                signature, json.dumps(data).encode("utf-8"), ec.ECDSA(hashes.SHA256())
+                signature.encode("utf-8"),
+                json.dumps(data).encode("utf-8"),
+                ec.ECDSA(hashes.SHA256()),
             )
             return True
         except InvalidSignature:
