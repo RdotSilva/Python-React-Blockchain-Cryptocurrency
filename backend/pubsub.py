@@ -14,7 +14,7 @@ pnconfig = PNConfiguration()
 pnconfig.subscribe_key = SUBSCRIBE_KEY
 pnconfig.publish_key = PUBLISH_KEY
 
-CHANNELS = {"TEST": "TEST", "BLOCK": "BLOCK"}
+CHANNELS = {"TEST": "TEST", "BLOCK": "BLOCK", "TRANSACTION": "TRANSACTION"}
 
 
 class Listener(SubscribeCallback):
