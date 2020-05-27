@@ -10,7 +10,15 @@ class Transaction:
     Document an exchange in currency from a sender to one of more recipients.
     """
 
-    def __init__(self, sender_wallet=None, recipient=None, amount=None, id=None, output=None, input=None):
+    def __init__(
+        self,
+        sender_wallet=None,
+        recipient=None,
+        amount=None,
+        id=None,
+        output=None,
+        input=None,
+    ):
         self.id = id or str(uuid.uuid4())[0:8]
         self.output = output or self.create_output(sender_wallet, recipient, amount)
         self.input = input or self.create_input(sender_wallet, self.output)
@@ -69,6 +77,11 @@ class Transaction:
         """
         Deserialize a transaction's json representation back into a Transaction instance.
         """
+        return Transaction(
+            id=transaction_json["id"],
+            output=transaction_json["output"],
+            input=transaction_json["input"],
+        )
 
     @staticmethod
     def is_valid_transaction(transaction):
