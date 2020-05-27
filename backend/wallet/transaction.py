@@ -10,10 +10,10 @@ class Transaction:
     Document an exchange in currency from a sender to one of more recipients.
     """
 
-    def __init__(self, sender_wallet, recipient, amount):
-        self.id = str(uuid.uuid4())[0:8]
-        self.output = self.create_output(sender_wallet, recipient, amount)
-        self.input = self.create_input(sender_wallet, self.output)
+    def __init__(self, sender_wallet, recipient, amount, id, output, input):
+        self.id = id or str(uuid.uuid4())[0:8]
+        self.output = output or self.create_output(sender_wallet, recipient, amount)
+        self.input = input or self.create_input(sender_wallet, self.output)
 
     def create_output(self, sender_wallet, recipient, amount):
         """
