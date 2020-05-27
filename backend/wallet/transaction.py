@@ -77,11 +77,7 @@ class Transaction:
         """
         Deserialize a transaction's json representation back into a Transaction instance.
         """
-        return Transaction(
-            id=transaction_json["id"],
-            output=transaction_json["output"],
-            input=transaction_json["input"],
-        )
+        return Transaction(**transaction_json)
 
     @staticmethod
     def is_valid_transaction(transaction):
