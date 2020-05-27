@@ -106,6 +106,10 @@ def main():
     transaction = Transaction(Wallet(), "recipient", 15)
     print(f"transaction.__dict__: {transaction.__dict__}")
 
+    transaction_json = transaction.to_json()
+    restored_transaction = Transaction.from_json(transaction_json)
+    print(f"restored_transaction.__dict__: {restored_transaction.__dict__}")
+
 
 if __name__ == "__main__":
     main()
