@@ -65,6 +65,12 @@ class Transaction:
         return self.__dict__
 
     @staticmethod
+    def from_json(transaction_json):
+        """
+        Deserialize a transaction's json representation back into a Transaction instance.
+        """
+
+    @staticmethod
     def is_valid_transaction(transaction):
         """
         Validate a transaction.
