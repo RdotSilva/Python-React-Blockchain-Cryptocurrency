@@ -62,6 +62,12 @@ class PubSub:
         """
         self.publish(CHANNELS["BLOCK"], block.to_json())
 
+    def broadcast_transaction(self, transaction):
+        """
+        Broadcast a transaction to all nodes.
+        """
+        self.publish(CHANNELS["TRANSACTION"], transaction.to_json())
+
 
 def main():
     pubsub = PubSub()
