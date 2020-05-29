@@ -5,6 +5,7 @@ from pubnub.pnconfiguration import PNConfiguration
 from pubnub.callbacks import SubscribeCallback
 
 from backend.blockchain.block import Block
+from backend.wallet.transaction import Transaction
 
 # Imports from config file, you need to create this and add your pubnub details
 from config import PUBLISH_KEY, SUBSCRIBE_KEY
@@ -38,7 +39,9 @@ class Listener(SubscribeCallback):
             except Exception as e:
                 print(f"\n -- Did not replace chain: {e}")
         elif message_object.channel == CHANNELS["TRANSACTION"]:
-
+            transaction = Transaction.from_json(message_object.message)
+            self.transaction_pool.set_transaction(transaction)
+            print("\n -- Set the new transaction in the transaction pool")
 
 
 class PubSub:
