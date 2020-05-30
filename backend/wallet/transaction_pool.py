@@ -20,5 +20,9 @@ class TransactionPool:
         """
         Return the transactions of the transaction pool represented in their json serialized form.
         """
+        return list(
+            map(
+                lambda transaction: transaction.to_json(), self.transaction_map.values()
+            )
+        )
 
-        return transaction_data
