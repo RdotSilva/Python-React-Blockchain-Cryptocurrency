@@ -26,3 +26,13 @@ class TransactionPool:
             )
         )
 
+    def clear_blockchain_transactions(self, blockchain):
+        """
+        Delete blockchain recorded transactions from the transaction pool.
+        """
+        for block in blockchain.chain:
+            for transaction in block.data:
+                try:
+                    del self._transaction_map[transaction["id"]]
+                except KeyError:
+                    pass
