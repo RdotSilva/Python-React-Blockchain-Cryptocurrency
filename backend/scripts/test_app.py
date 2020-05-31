@@ -1,4 +1,7 @@
 import requests
+import time
+
+from backend.wallet.wallet import Wallet
 
 BASE_URL = "http://localhost:5000"
 
@@ -20,3 +23,16 @@ def post_wallet_transact(recipient, amount):
 start_blockchain = get_blockchain()
 
 print(f"start_blockchain: {start_blockchain} ")
+
+
+recipient = Wallet().address
+
+post_wallet_transact_1 = post_wallet_transact(recipient, 21)
+print(f"\npost_wallet_transaction_1: {post_wallet_transact_1}")
+
+post_wallet_transact_2 = post_wallet_transact(recipient, 13)
+print(f"\npost_wallet_transaction_2: {post_wallet_transact_2}")
+
+time.sleep(1)
+mined_block = get_blockchain_mine()
+print(f"\nmined_block: {mined_block}")
