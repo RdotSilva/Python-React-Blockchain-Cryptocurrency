@@ -33,6 +33,6 @@ class TransactionPool:
         for block in blockchain.chain:
             for transaction in block.data:
                 try:
-                    del self._transaction_map[transaction["id"]]
+                    del self.transaction_map[transaction["id"]]
                 except KeyError:
                     pass
