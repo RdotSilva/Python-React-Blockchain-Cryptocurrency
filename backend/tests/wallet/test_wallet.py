@@ -1,4 +1,6 @@
 from backend.wallet.wallet import Wallet
+from backend.blockchain.blockchain import Blockchain
+from backend.config import STARTING_BALANCE
 
 
 def test_verify_valid_signature():
@@ -15,3 +17,10 @@ def test_verify_invalid_signature():
     signature = wallet.sign(data)
 
     assert not Wallet.verify(Wallet().public_key, data, signature)
+
+
+def test_calculate_balance():
+    blockchain = Blockchain()
+    wallet = Wallet()
+
+    assert Wallet.calculate_balance(blockchain, wallet.address) == STARTING_BALANCE
