@@ -1,4 +1,5 @@
 from backend.wallet.wallet import Wallet
+from backend.wallet.transaction import Transaction
 from backend.blockchain.blockchain import Blockchain
 from backend.config import STARTING_BALANCE
 
@@ -24,3 +25,13 @@ def test_calculate_balance():
     wallet = Wallet()
 
     assert Wallet.calculate_balance(blockchain, wallet.address) == STARTING_BALANCE
+
+    amount = 50
+    transaction = Transaction(wallet, "recipient", amount)
+    blockchain.add_block([transaction.to_json()])
+
+    assert (
+        Wallet.calculate_balance(blockchain, wallet.address)
+        == STARTING_BALANCE - amount
+    )
+
