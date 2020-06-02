@@ -109,3 +109,6 @@ def test_reward_transaction():
 def test_valid_reward_transaction():
     reward_transaction = Transaction.reward_transaction(Wallet())
     Transaction.is_valid_transaction(reward_transaction)
+
+
+# TODO: Add 2 more tests to check the logic of validating mining rewards
