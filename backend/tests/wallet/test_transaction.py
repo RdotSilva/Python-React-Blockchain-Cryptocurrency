@@ -104,3 +104,8 @@ def test_reward_transaction():
 
     assert transaction.input == MINING_REWARD_INPUT
     assert transaction.output[miner_wallet.address] == MINING_REWARD
+
+
+def test_valid_reward_transaction():
+    reward_transaction = Transaction.reward_transaction(Wallet())
+    Transaction.is_valid_transaction(reward_transaction)
