@@ -111,4 +111,9 @@ def test_valid_reward_transaction():
     Transaction.is_valid_transaction(reward_transaction)
 
 
-# TODO: Add 2 more tests to check the logic of validating mining rewards
+def test_invalid_reward_transaction_extra_recipient():
+    reward_transaction = Transaction.reward_transaction(Wallet())
+    reward_transaction.output["extra_recipient"] = 60
+
+    with pytest.raises(Exception, match="Invalid mining reward"):
+        Transaction.is_valid_transaction(reward_transaction)
