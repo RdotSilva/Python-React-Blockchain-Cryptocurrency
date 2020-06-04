@@ -71,6 +71,15 @@ class Blockchain:
             last_block = chain[i - 1]
             Block.is_valid_block(last_block, block)
 
+    @staticmethod
+    def is_valid_transaction_chain(chain):
+        """
+        Enforce the rules of a chain composed of blocks of transactions.
+            - Each transaction must only appear once in the chain.
+            - There can only be one mining reward per block.
+            - Each transaction must be valid.
+        """
+
 
 def main():
     blockchain = Blockchain()
