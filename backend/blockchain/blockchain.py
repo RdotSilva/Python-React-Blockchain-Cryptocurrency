@@ -1,4 +1,6 @@
 from backend.blockchain.block import Block
+from backend.wallet.transaction import Transaction
+from backend.config import MINING_REWARD_INPUT
 
 
 class Blockchain:
@@ -79,6 +81,28 @@ class Blockchain:
             - There can only be one mining reward per block.
             - Each transaction must be valid.
         """
+        transaction_ids = set()
+
+        for block in chain:
+            has_mining_reward = False
+
+            for transaction_json in block.data:
+                transaction = Transaction.from_json(transaction_json)
+
+                if transaction.input == MINING_REWARD_INPUT:
+                    if has_mining_reward:
+                        raise Exception(
+                            f"There can only be one mining reward per block. Check block with hash: {block.hash} "
+                        )
+
+                    has_mining_reward = True
+
+                if transaction.id in transaction_ids:
+                    raise Exception(f"Transaction: {transaction.id} is not unique")
+
+                transaction_ids.add(transaction.id)
+
+                Transaction.is_valid_transaction(transaction)
 
 
 def main():
