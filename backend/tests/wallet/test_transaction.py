@@ -117,3 +117,12 @@ def test_invalid_reward_transaction_extra_recipient():
 
     with pytest.raises(Exception, match="Invalid mining reward"):
         Transaction.is_valid_transaction(reward_transaction)
+
+
+def test_invalid_reward_transaction_invalid_amount():
+    miner_wallet = Wallet()
+    reward_transaction = Transaction.reward_transaction(miner_wallet)
+    reward_transaction.output[miner_wallet.address] = 9001
+
+    with pytest.raises(Exception, match="Invalid mining reward"):
+        Transaction.is_valid_transaction(reward_transaction)
