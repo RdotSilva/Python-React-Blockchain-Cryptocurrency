@@ -73,3 +73,13 @@ def test_is_valid_transaction_chain_duplicate_transactions(blockchain_three_bloc
 
     with pytest.raises(Exception, match="is not unique"):
         Blockchain.is_valid_transaction_chain(blockchain_three_blocks.chain)
+
+
+def test_is_valid_transaction_chain_multiple_rewards(blockchain_three_blocks):
+    reward_1 = Transaction.reward_transaction(Wallet()).to_json()
+    reward_2 = Transaction.reward_transaction(Wallet()).to_json()
+
+    blockchain_three_blocks.add_block([reward_1, reward_2])
+
+    with pytest.raises(Exception, match="one mining reward per block"):
+        Blockchain.is_valid_transaction_chain(blockchain_three_blocks.chain)
