@@ -65,3 +65,11 @@ def test_replace_chain_bad_chain(blockchain_three_blocks):
 
 def test_valid_transaction_chain(blockchain_three_blocks):
     Blockchain.is_valid_transaction_chain(blockchain_three_blocks.chain)
+
+
+def test_is_valid_transaction_chain_duplicate_transactions(blockchain_three_blocks):
+    transaction = Transaction(Wallet(), "recipient", 1).to_json()
+    blockchain_three_blocks.add_block([transaction, transaction])
+
+    with pytest.raises(Exception, match="is not unique"):
+        Blockchain.is_valid_transaction_chain(blockchain_three_blocks.chain)
