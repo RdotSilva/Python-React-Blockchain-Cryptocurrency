@@ -2,6 +2,8 @@ import pytest
 
 from backend.blockchain.blockchain import Blockchain
 from backend.blockchain.block import GENESIS_DATA
+from backend.wallet.wallet import Wallet
+from backend.wallet.transaction import Transaction
 
 
 def test_blockchain_instance():
@@ -24,7 +26,7 @@ def test_add_block():
 def blockchain_three_blocks():
     blockchain = Blockchain()
     for i in range(3):
-        blockchain.add_block(i)
+        blockchain.add_block([Transaction(Wallet(), "recipient", i).to_json()])
     return blockchain
 
 
@@ -59,6 +61,3 @@ def test_replace_chain_bad_chain(blockchain_three_blocks):
 
     with pytest.raises(Exception, match="The incoming chain is invalid"):
         blockchain.replace_chain(blockchain_three_blocks.chain)
-
-
-# TODO Add test methods for testing valid transaction chain method
