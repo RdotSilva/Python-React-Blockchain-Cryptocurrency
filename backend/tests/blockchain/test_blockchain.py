@@ -83,3 +83,12 @@ def test_is_valid_transaction_chain_multiple_rewards(blockchain_three_blocks):
 
     with pytest.raises(Exception, match="one mining reward per block"):
         Blockchain.is_valid_transaction_chain(blockchain_three_blocks.chain)
+
+
+def test_is_valid_transaction_chain_bad_transaction(blockchain_three_blocks):
+    bad_transaction = Transaction(Wallet(), "recipient", 1)
+    bad_transaction.input["signature"] = Wallet().sign(bad_transaction.output)
+    blockchain_three_blocks.add_block([bad_transaction.to_json()])
+
+    with pytest.raises(Exception):
+        Blockchain.is_valid_transaction_chain(blockchain_three_blocks.chain)
