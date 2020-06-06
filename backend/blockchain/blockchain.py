@@ -1,5 +1,6 @@
 from backend.blockchain.block import Block
 from backend.wallet.transaction import Transaction
+from backend.wallet.wallet import Wallet
 from backend.config import MINING_REWARD_INPUT
 
 
@@ -83,7 +84,8 @@ class Blockchain:
         """
         transaction_ids = set()
 
-        for block in chain:
+        for i in range(len(chain)):
+            block = chain[i]
             has_mining_reward = False
 
             for transaction_json in block.data:
@@ -101,6 +103,17 @@ class Blockchain:
                     raise Exception(f"Transaction: {transaction.id} is not unique")
 
                 transaction_ids.add(transaction.id)
+
+                historic_blockchain = Blockchain()
+                historic_blockchain.chain = chain[0:i]
+                historic_balance = Wallet.calculate_balance(
+                    historic_blockchain, transaction.input["address"]
+                )
+
+                if historic_balance != transaction.input["amount"]:
+                    raise Exception(
+                        f"Transaction {transaction.id} has an invalid input amount"
+                    )
 
                 Transaction.is_valid_transaction(transaction)
 
