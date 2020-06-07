@@ -22,11 +22,21 @@ python -m backend.app
 
 Run the python script command in terminal to run a peer instance
 
-(This is mainly used for testing. Allows you to create a peer instance and test blockchain updates.)
+(This is mainly used for testing. Allows you to create a peer instance and test blockchain updates)
 
 ```
 export PEER=True && python -m backend.app
 ```
+
+## Run the frontend
+
+Run the npm script command in terminal to start the frontend
+
+```
+npm run start
+```
+
+Navigate to http://localhost:3000/ to view the app
 
 ### Unit Tests
 
