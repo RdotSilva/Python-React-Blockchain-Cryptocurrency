@@ -8,10 +8,14 @@ function App() {
     setUserQuery(event.target.value);
   };
 
+  const searchQuery = () => {
+    window.open(`https://google.com/search?q=${userQuery}`);
+  };
+
   return (
     <div className="App">
       <input value={userQuery} onChange={updateUserQuery} />
-      <button>Search</button>
+      <button onClick={searchQuery}>Search</button>
     </div>
   );
 }
