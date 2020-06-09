@@ -1,35 +1,10 @@
-import React, { useState } from "react";
-import Joke from "./Joke";
-
+import React from "react";
+import logo from "./assets/logo.png";
 function App() {
-  const [userQuery, setUserQuery] = useState("");
-
-  const updateUserQuery = (event) => {
-    console.log("userQuery:", userQuery);
-    setUserQuery(event.target.value);
-  };
-
-  const searchQuery = () => {
-    window.open(`https://google.com/search?q=${userQuery}`);
-  };
-
-  const handleKeyPress = (event) => {
-    if (event.key === "Enter") {
-      searchQuery();
-    }
-  };
-
   return (
     <div className="App">
-      <input
-        value={userQuery}
-        onChange={updateUserQuery}
-        onKeyPress={handleKeyPress}
-      />
-      <button onClick={searchQuery}>Search</button>
-      <div>{userQuery}</div>
-      <hr />
-      <Joke />
+      <img className="logo" src={logo} alt="logo" />
+      <h3>Welcome to pychain</h3>
     </div>
   );
 }
