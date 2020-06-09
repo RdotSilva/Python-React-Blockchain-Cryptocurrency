@@ -9,9 +9,15 @@ function Joke() {
       .then((json) => setJoke(json));
   }, []);
 
+  const { setup, punchline } = joke;
+
   return (
     <div>
       <h3>Joke</h3>
+      <p>{setup}</p>
+      <p>
+        <em>{punchline}</em>
+      </p>
     </div>
   );
 }
