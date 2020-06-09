@@ -6,9 +6,8 @@ function Joke() {
   useEffect(() => {
     fetch("https://official-joke-api.appspot.com/jokes/random")
       .then((response) => response.json())
-      .then((json) => console.log("Joke JSON:", json));
-    console.log("Fetching data...");
-  });
+      .then((json) => setJoke(json));
+  }, []);
 
   return (
     <div>
