@@ -10,10 +10,17 @@ function App() {
       .then((json) => setWalletInfo(json));
   }, []);
 
+  const { address, balance } = walletInfo;
+
   return (
     <div className="App">
       <img className="logo" src={logo} alt="logo" />
       <h3>Welcome to pychain</h3>
+      <br />
+      <div className="WalletInfo">
+        <div>Address: {address}</div>
+        <div>Balance: {balance}</div>
+      </div>
     </div>
   );
 }
