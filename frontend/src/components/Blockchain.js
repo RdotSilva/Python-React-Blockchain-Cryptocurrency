@@ -2,12 +2,12 @@ import React, { useState, useEffect } from "react";
 import { API_BASE_URL } from "../config";
 
 function Blockchain() {
-  const [blockchain, setBlockchain] = useState({});
+  const [blockchain, setBlockchain] = useState([]);
 
   useEffect(() => {
-    fetch(`${API_BASE_URL}/blockchain`).then((response) => {
-      response.json().then((json) => setBlockchain(json));
-    });
+    fetch(`${API_BASE_URL}/blockchain`)
+      .then((response) => response.json())
+      .then((json) => setBlockchain(json));
   }, []);
 
   return (
