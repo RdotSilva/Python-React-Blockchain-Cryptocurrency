@@ -7,6 +7,14 @@ function Block({ block }) {
   const timestampDisplay = new Date(
     timestamp / MILLISECONDS_PY
   ).toLocaleString();
+
+  return (
+    <div className="Block">
+      <div>Hash: {hashDisplay}</div>
+      <div>Timestamp: {timeStampDisplay}</div>
+      <div>{JSON.stringify(data)}</div>
+    </div>
+  );
 }
 
 export default Block;
