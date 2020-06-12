@@ -11,7 +11,7 @@ function Block({ block }) {
   return (
     <div className="Block">
       <div>Hash: {hashDisplay}</div>
-      <div>Timestamp: {timeStampDisplay}</div>
+      <div>Timestamp: {timestampDisplay}</div>
       <div>{JSON.stringify(data)}</div>
     </div>
   );
