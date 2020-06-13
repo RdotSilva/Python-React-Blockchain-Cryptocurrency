@@ -2,7 +2,7 @@ import React from "react";
 
 function Transaction({ transaction }) {
   const { input, output } = transaction;
-  const recipients = Objects.keys(output);
+  const recipients = Object.keys(output);
 
   return (
     <div className="Transaction">
