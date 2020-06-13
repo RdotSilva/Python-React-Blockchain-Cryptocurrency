@@ -7,6 +7,10 @@ function ToggleTransactionDisplay({ block }) {
   const [displayTransaction, setDisplayTransaction] = useState(false);
   const { data } = block;
 
+  const toggleDisplayTransaction = () => {
+    setDisplayTransaction(!displayTransaction);
+  };
+
   if (displayTransaction) {
     return (
       <div>
@@ -23,7 +27,7 @@ function ToggleTransactionDisplay({ block }) {
   return (
     <div>
       <br />
-      <Button variant="danger" size="sm">
+      <Button variant="danger" size="sm" onClick={toggleDisplayTransaction}>
         Show More
       </Button>
     </div>
