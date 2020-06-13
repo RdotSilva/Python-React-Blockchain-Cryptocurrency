@@ -20,6 +20,10 @@ function ToggleTransactionDisplay({ block }) {
             <Transaction transaction={transaction} />
           </div>
         ))}
+        <br />
+        <Button variant="danger" size="sm" onClick={toggleDisplayTransaction}>
+          Show Less
+        </Button>
       </div>
     );
   }
@@ -35,7 +39,7 @@ function ToggleTransactionDisplay({ block }) {
 }
 
 function Block({ block }) {
-  const { timestamp, hash, data } = block;
+  const { timestamp, hash } = block;
   const hashDisplay = `${hash.substring(0, 15)}...`;
   const timestampDisplay = new Date(
     timestamp / MILLISECONDS_PY
@@ -45,6 +49,7 @@ function Block({ block }) {
     <div className="Block">
       <div>Hash: {hashDisplay}</div>
       <div>Timestamp: {timestampDisplay}</div>
+      <ToggleTransactionDisplay block={block} />
     </div>
   );
 }
