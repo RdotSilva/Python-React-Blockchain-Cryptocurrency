@@ -19,6 +19,15 @@ function ToggleTransactionDisplay({ block }) {
       </div>
     );
   }
+
+  return (
+    <div>
+      <br />
+      <Button variant="danger" size="sm">
+        Show More
+      </Button>
+    </div>
+  );
 }
 
 function Block({ block }) {
