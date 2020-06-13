@@ -1,6 +1,11 @@
-import React from "react";
+import React, { useState } from "react";
+import { Button } from "react-bootstrap";
 import { MILLISECONDS_PY } from "../config";
 import Transaction from "./Transaction";
+
+function ToggleTransactionDisplay({ block }) {
+  const [displayTransaction, setDisplayTransaction] = useState(false);
+}
 
 function Block({ block }) {
   const { timestamp, hash, data } = block;
