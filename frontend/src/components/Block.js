@@ -49,7 +49,10 @@ function Block({ block }) {
     <div className="Block">
       <div>Hash: {hashDisplay}</div>
       <div>Timestamp: {timestampDisplay}</div>
-      <ToggleTransactionDisplay block={block} />
+      {/* Make sure not to display toggle button for genesis hash*/}
+      {hashDisplay !== "genesis_hash..." ? (
+        <ToggleTransactionDisplay block={block} />
+      ) : null}
     </div>
   );
 }
