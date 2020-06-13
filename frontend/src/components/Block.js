@@ -5,6 +5,20 @@ import Transaction from "./Transaction";
 
 function ToggleTransactionDisplay({ block }) {
   const [displayTransaction, setDisplayTransaction] = useState(false);
+  const { data } = block;
+
+  if (displayTransaction) {
+    return (
+      <div>
+        {data.map((transaction) => (
+          <div key={transaction.id}>
+            <hr />
+            <Transaction transaction={transaction} />
+          </div>
+        ))}
+      </div>
+    );
+  }
 }
 
 function Block({ block }) {
@@ -18,14 +32,6 @@ function Block({ block }) {
     <div className="Block">
       <div>Hash: {hashDisplay}</div>
       <div>Timestamp: {timestampDisplay}</div>
-      <div>
-        {data.map((transaction) => (
-          <div key={transaction.id}>
-            <hr />
-            <Transaction transaction={transaction} />
-          </div>
-        ))}
-      </div>
     </div>
   );
 }
