@@ -28,6 +28,14 @@ Run the python script command in terminal to run a peer instance
 export PEER=True && python -m backend.app
 ```
 
+## Seed the backend with data
+
+Run the python script command in terminal to seed transaction data
+
+```
+export SEED_DATA=True && python -m backend.app
+```
+
 ## Run the frontend
 
 Run the npm script command in terminal to start the frontend
