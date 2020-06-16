@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { Button } from "react-bootstrap";
 import { API_BASE_URL } from "../config";
 import Block from "./Block";
 
@@ -30,6 +31,17 @@ function Blockchain() {
         {blockchain.map((block) => (
           <Block key={block.hash} block={block} />
         ))}
+      </div>
+      <div>
+        {buttonNumbers.map((number) => {
+          return (
+            <span key={number}>
+              <Button size="sm" variant="danger">
+                {number + 1}
+              </Button>{" "}
+            </span>
+          );
+        })}
       </div>
     </div>
   );
