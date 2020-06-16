@@ -2,10 +2,11 @@ import React, { useState, useEffect } from "react";
 import { API_BASE_URL } from "../config";
 import Block from "./Block";
 
-// TODO: Add Pagination for front end. Backend is set up with routes.
+const PAGE_RANGE = 3;
 
 function Blockchain() {
   const [blockchain, setBlockchain] = useState([]);
+  const [blockchainLength, setBlockchainLength] = useState(0);
 
   useEffect(() => {
     fetch(`${API_BASE_URL}/blockchain`)
