@@ -18,6 +18,11 @@ function Blockchain() {
       .then((json) => setBlockchainLength(json));
   }, []);
 
+  const buttonNumbers = [];
+  for (let i = 0; i < blockchainLength / PAGE_RANGE; i++) {
+    buttonNumbers.push(i);
+  }
+
   return (
     <div className="Blockchain">
       <h3>Blockchain</h3>
