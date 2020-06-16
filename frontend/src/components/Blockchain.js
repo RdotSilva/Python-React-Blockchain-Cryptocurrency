@@ -12,6 +12,10 @@ function Blockchain() {
     fetch(`${API_BASE_URL}/blockchain`)
       .then((response) => response.json())
       .then((json) => setBlockchain(json));
+
+    fetch(`${API_BASE_URL}/blockchain/length'`)
+      .then((response) => response.json())
+      .then((json) => setBlockchainLength(json));
   }, []);
 
   return (
