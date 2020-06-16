@@ -9,6 +9,12 @@ function Blockchain() {
   const [blockchain, setBlockchain] = useState([]);
   const [blockchainLength, setBlockchainLength] = useState(0);
 
+  const fetchBlockchainPage = ({ start, end }) => {
+    fetch(`${API_BASE_URL}/blockchain/range?start=${start}&end=${end}`)
+      .then((response) => response.json())
+      .then((json) => setBlockchain(json));
+  };
+
   useEffect(() => {
     fetch(`${API_BASE_URL}/blockchain`)
       .then((response) => response.json())
