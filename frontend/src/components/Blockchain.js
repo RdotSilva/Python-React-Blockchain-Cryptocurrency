@@ -16,11 +16,9 @@ function Blockchain() {
   };
 
   useEffect(() => {
-    fetch(`${API_BASE_URL}/blockchain`)
-      .then((response) => response.json())
-      .then((json) => setBlockchain(json));
+    fetchBlockchainPage({ start: 0, end: PAGE_RANGE });
 
-    fetch(`${API_BASE_URL}/blockchain/length'`)
+    fetch(`${API_BASE_URL}/blockchain/length`)
       .then((response) => response.json())
       .then((json) => setBlockchainLength(json));
   }, []);
@@ -42,6 +40,7 @@ function Blockchain() {
         {buttonNumbers.map((number) => {
           const start = number * PAGE_RANGE;
           const end = (number + 1) * PAGE_RANGE;
+
           return (
             <span
               key={number}
