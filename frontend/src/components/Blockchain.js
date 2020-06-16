@@ -40,8 +40,13 @@ function Blockchain() {
       </div>
       <div>
         {buttonNumbers.map((number) => {
+          const start = number * PAGE_RANGE;
+          const end = (number + 1) * PAGE_RANGE;
           return (
-            <span key={number}>
+            <span
+              key={number}
+              onClick={() => fetchBlockchainPage({ start, end })}
+            >
               <Button size="sm" variant="danger">
                 {number + 1}
               </Button>{" "}
