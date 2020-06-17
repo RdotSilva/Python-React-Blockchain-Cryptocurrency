@@ -22,6 +22,14 @@ function ConductTransaction() {
           onChange={updateRecipient}
         />
       </FormGroup>
+      <FormGroup>
+        <FormControl
+          input="number"
+          placeholder="amount"
+          value={amount}
+          onChange={updateAmount}
+        />
+      </FormGroup>
     </div>
   );
 }
