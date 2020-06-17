@@ -5,6 +5,21 @@ import { API_BASE_URL } from "../config";
 function ConductTransaction() {
   const [amount, setAmount] = useState(0);
   const [recipient, setRecipient] = useState("");
+
+  return (
+    <div className="ConductTransaction">
+      <h3>Conduct a Transaction</h3>
+      <br />
+      <FormGroup>
+        <FormControl
+          input="text"
+          placeholder="recipient"
+          value={recipient}
+          onChange={updateRecipient}
+        />
+      </FormGroup>
+    </div>
+  );
 }
 
 export default ConductTransaction;
