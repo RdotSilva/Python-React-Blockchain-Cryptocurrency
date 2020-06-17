@@ -10,6 +10,10 @@ function ConductTransaction() {
     setRecipient(event.target.value);
   };
 
+  const updateAmount = (event) => {
+    setAmount(Number(event.target.value));
+  };
+
   return (
     <div className="ConductTransaction">
       <h3>Conduct a Transaction</h3>
