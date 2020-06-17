@@ -6,6 +6,10 @@ function ConductTransaction() {
   const [amount, setAmount] = useState(0);
   const [recipient, setRecipient] = useState("");
 
+  const updateRecipient = (event) => {
+    setRecipient(event.target.value);
+  };
+
   return (
     <div className="ConductTransaction">
       <h3>Conduct a Transaction</h3>
