@@ -14,6 +14,19 @@ function ConductTransaction() {
     setAmount(Number(event.target.value));
   };
 
+  const submitTransaction = () => {
+    fetch(`${API_BASE_URL}/wallet/transact`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ recipient, amount }),
+    })
+      .then((response) => response.json())
+      .then((json) => {
+        console.log("submitTransaction json", json);
+        alert("Success!");
+      });
+  };
+
   return (
     <div className="ConductTransaction">
       <h3>Conduct a Transaction</h3>
