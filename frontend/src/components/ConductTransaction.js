@@ -34,7 +34,9 @@ function ConductTransaction() {
           onChange={updateAmount}
         />
       </FormGroup>
-      // TODO: Add button to submit form controls
+      <Button variant="danger" onClick={submitTransaction}>
+        Submit
+      </Button>
     </div>
   );
 }
