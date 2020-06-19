@@ -1,6 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import { Router, Switch, Route } from "react-router-dom";
+import { BrowserRouter, Switch, Route } from "react-router-dom";
 import { createBrowserHistory } from "history";
 import "./index.css";
 import App from "./App";
@@ -9,13 +9,13 @@ import ConductTransaction from "./components/ConductTransaction";
 
 ReactDOM.render(
   <React.StrictMode>
-    <Router history={createBrowserHistory()}>
+    <BrowserRouter history={createBrowserHistory()}>
       <Switch>
-        <Route path="/" exact component={App} />
+        <Route exact path="/" component={App} />
         <Route path="/blockchain" component={Blockchain} />
         <Route path="/conduct-transaction" component={ConductTransaction} />
       </Switch>
-    </Router>
+    </BrowserRouter>
   </React.StrictMode>,
   document.getElementById("root")
 );
