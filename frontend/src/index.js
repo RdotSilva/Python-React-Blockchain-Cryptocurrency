@@ -9,9 +9,9 @@ import ConductTransaction from "./components/ConductTransaction";
 
 ReactDOM.render(
   <React.StrictMode>
-    <Router>
+    <Router history={createBrowserHistory()}>
       <Switch>
-        <Route path="/" component={App} />
+        <Route path="/" exact component={App} />
         <Route path="/blockchain" component={Blockchain} />
         <Route path="/conduct-transaction" component={ConductTransaction} />
       </Switch>
