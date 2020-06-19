@@ -12,6 +12,7 @@ ReactDOM.render(
     <Router>
       <Switch>
         <Route path="/" component={App} />
+        <Route path="/blockchain" component={Blockchain} />
       </Switch>
     </Router>
   </React.StrictMode>,
