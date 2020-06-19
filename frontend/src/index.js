@@ -13,6 +13,7 @@ ReactDOM.render(
       <Switch>
         <Route path="/" component={App} />
         <Route path="/blockchain" component={Blockchain} />
+        <Route path="/conduct-transaction" component={ConductTransaction} />
       </Switch>
     </Router>
   </React.StrictMode>,
