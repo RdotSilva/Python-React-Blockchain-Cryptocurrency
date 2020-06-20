@@ -8,6 +8,12 @@ function ConductTransaction() {
   const [recipient, setRecipient] = useState("");
   const [knownAddresses, setKnownAddresses] = useState([]);
 
+  useEffect(() => {
+    fetch(`${API_BASE_URL}/known-addresses`)
+      .then((response) => response.json())
+      .then((json) => setKnownAddresses(json));
+  }, []);
+
   const updateRecipient = (event) => {
     setRecipient(event.target.value);
   };
