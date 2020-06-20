@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { FormGroup, FormControl, Button } from "react-bootstrap";
 import { API_BASE_URL } from "../config";
@@ -6,6 +6,7 @@ import { API_BASE_URL } from "../config";
 function ConductTransaction() {
   const [amount, setAmount] = useState(0);
   const [recipient, setRecipient] = useState("");
+  const [knownAddresses, setKnownAddresses] = useState([]);
 
   const updateRecipient = (event) => {
     setRecipient(event.target.value);
