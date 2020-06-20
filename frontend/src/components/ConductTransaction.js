@@ -57,9 +57,23 @@ function ConductTransaction() {
           onChange={updateAmount}
         />
       </FormGroup>
-      <Button variant="danger" onClick={submitTransaction}>
-        Submit
-      </Button>
+      <div>
+        <Button variant="danger" onClick={submitTransaction}>
+          Submit
+        </Button>
+      </div>
+      <br />
+      <h4>Known Addresses</h4>
+      <div>
+        {knownAddresses.map((knownAddress, index) => (
+          <span key={knownAddress}>
+            <u>
+              {knownAddress}
+              {index !== knownAddress.length - 1 ? ", " : ""}
+            </u>
+          </span>
+        ))}
+      </div>
     </div>
   );
 }
