@@ -92,6 +92,9 @@ def route_known_addresses():
     return jsonify(list(known_addresses))
 
 
+# TODO: Add new route to handle transaction pool and then add frontend component to match
+
+
 ROOT_PORT = 5000
 PORT = ROOT_PORT
 
