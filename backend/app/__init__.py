@@ -126,5 +126,11 @@ if os.environ.get("SEED_DATA") == "True":
             ]
         )
 
+    # Generate 3 transactions
+    for i in range(3):
+        transaction_pool.set_transaction(
+            Transaction(Wallet(), Wallet().address, random.randint(2, 50))
+        )
+
 
 app.run(port=PORT)
