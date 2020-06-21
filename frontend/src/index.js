@@ -6,6 +6,7 @@ import "./index.css";
 import App from "./App";
 import Blockchain from "./components/Blockchain";
 import ConductTransaction from "./components/ConductTransaction";
+import TransactionPool from "./components/TransactionPool";
 
 ReactDOM.render(
   <React.StrictMode>
@@ -14,6 +15,7 @@ ReactDOM.render(
         <Route exact path="/" component={App} />
         <Route path="/blockchain" component={Blockchain} />
         <Route path="/conduct-transaction" component={ConductTransaction} />
+        <Route path="/transaction-pool" component={TransactionPool} />
       </Switch>
     </BrowserRouter>
   </React.StrictMode>,
