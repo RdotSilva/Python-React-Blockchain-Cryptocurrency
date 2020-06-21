@@ -92,7 +92,9 @@ def route_known_addresses():
     return jsonify(list(known_addresses))
 
 
-# TODO: Add new route to handle transaction pool and then add frontend component to match
+@app.route("/transactions")
+def route_transactions():
+    return jsonify(transaction_pool.transaction_data())
 
 
 ROOT_PORT = 5000
