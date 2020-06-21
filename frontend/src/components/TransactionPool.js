@@ -11,6 +11,22 @@ function TransactionPool() {
       .then((response) => response.json())
       .then((json) => setTransactions(json));
   }, []);
+
+  return (
+    <div className="TransactionPool">
+      <Link to="/">Home</Link>
+      <hr />
+      <h3>Transaction Pool</h3>
+      <div>
+        {transactions.map((transaction) => (
+          <div key={transaction.id}>
+            <hr />
+            <Transaction transaction={transaction} />
+          </div>
+        ))}
+      </div>
+    </div>
+  );
 }
 
 export default TransactionPool;
