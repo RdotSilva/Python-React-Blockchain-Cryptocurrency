@@ -20,7 +20,9 @@ function TransactionPool() {
   useEffect(() => {
     fetchTransactions();
 
-    setInterval(fetchTransactions, POLL_INTERVAL);
+    const intervalId = setInterval(fetchTransactions, POLL_INTERVAL);
+
+    return () => clearInterval(intervalId);
   }, []);
 
   return (
