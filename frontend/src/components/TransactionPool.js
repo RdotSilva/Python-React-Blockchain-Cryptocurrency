@@ -15,6 +15,8 @@ function TransactionPool() {
       });
   };
 
+  // TODO: Add useEffect hook with set interval to call fetch transactions
+
   return (
     <div className="TransactionPool">
       <Link to="/">Home</Link>
