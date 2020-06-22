@@ -15,7 +15,11 @@ function TransactionPool() {
       });
   };
 
-  // TODO: Add useEffect hook with set interval to call fetch transactions
+  useEffect(() => {
+    fetchTransactions();
+
+    setInterval(fetchTransactions, 1000);
+  }, []);
 
   return (
     <div className="TransactionPool">
