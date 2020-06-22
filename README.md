@@ -58,9 +58,16 @@ python -m pytest backend/tests
 
 ## Built With
 
+Backend
+
 - Python 3.7
 - Flask 1.1
 - Pytest 5.4.1
+
+Frontend
+
+- React
+- React BootStrap
 
 ## APIs Used
 
