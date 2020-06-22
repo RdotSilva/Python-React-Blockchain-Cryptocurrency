@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { FormGroup, FormControl, Button } from "react-bootstrap";
 import { API_BASE_URL } from "../config";
+import { useHistory } from "react-router-dom";
 
 function ConductTransaction() {
   const [amount, setAmount] = useState(0);
@@ -13,6 +14,8 @@ function ConductTransaction() {
       .then((response) => response.json())
       .then((json) => setKnownAddresses(json));
   }, []);
+
+  let history = useHistory();
 
   const updateRecipient = (event) => {
     setRecipient(event.target.value);
@@ -32,6 +35,7 @@ function ConductTransaction() {
       .then((json) => {
         console.log("submitTransaction json", json);
         alert("Success!");
+        history.push("/transaction-pool");
       });
   };
 
