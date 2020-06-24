@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import logo from "./assets/logo.png";
 import { API_BASE_URL } from "./config";
+import Navbar from "./components/Navbar";
 
 function App() {
   const [walletInfo, setWalletInfo] = useState({});
@@ -16,8 +17,11 @@ function App() {
 
   return (
     <div className="App">
+      <Navbar />
       <img className="logo" src={logo} alt="logo" />
+
       <h3>Welcome to pychain</h3>
+
       <br />
       <Link to="/blockchain">Blockchain</Link>
       <Link to="/conduct-transaction">Conduct a Transaction</Link>
