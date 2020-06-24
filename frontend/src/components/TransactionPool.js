@@ -26,6 +26,12 @@ function TransactionPool() {
     return () => clearInterval(intervalId);
   }, []);
 
+  const fetchMineBlock = () => {
+    fetch(`${API_BASE_URL}/blockchain/mine`).then(() => {
+      alert("Succes!");
+    });
+  };
+
   return (
     <div className="TransactionPool">
       <Link to="/">Home</Link>
