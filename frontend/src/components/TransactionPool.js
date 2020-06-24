@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
+import { Button } from "react-bootstrap";
 import Transaction from "./Transaction";
 import { API_BASE_URL, SECONDS_JS } from "../config";
 
@@ -38,6 +39,10 @@ function TransactionPool() {
           </div>
         ))}
       </div>
+      <hr />
+      <Button variant="danger" onClick={fetchMineBlock}>
+        Mine a block of these transactions
+      </Button>
     </div>
   );
 }
