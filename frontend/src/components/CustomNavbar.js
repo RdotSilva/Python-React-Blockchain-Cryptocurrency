@@ -7,6 +7,8 @@ function CustomNavbar() {
       <Navbar.Collapse id="basic-navbar-nav">
         <Nav className="mr-auto">
           <Nav.Link href="/">Home</Nav.Link>
+          <br />
+          <Nav.Link href="/blockchain">Blockchain</Nav.Link>
         </Nav>
       </Navbar.Collapse>
     </Navbar>
