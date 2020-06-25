@@ -6,11 +6,10 @@ import App from "./App";
 import Blockchain from "./components/Blockchain";
 import ConductTransaction from "./components/ConductTransaction";
 import TransactionPool from "./components/TransactionPool";
-import history from "./history";
 
 ReactDOM.render(
   <React.StrictMode>
-    <BrowserRouter history={history}>
+    <BrowserRouter>
       <Switch>
         <Route exact path="/" component={App} />
         <Route path="/blockchain" component={Blockchain} />
