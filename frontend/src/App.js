@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import logo from "./assets/logo.png";
 import { API_BASE_URL } from "./config";
 import CustomNavbar from "./components/CustomNavbar";
+import { Card, Button } from "react-bootstrap";
 
 function App() {
   const [walletInfo, setWalletInfo] = useState({});
@@ -26,9 +27,18 @@ function App() {
       <Link to="/blockchain">Blockchain</Link>
       <Link to="/conduct-transaction">Conduct a Transaction</Link>
       <Link to="/transaction-pool">Transaction Pool</Link>
+
       <div className="WalletInfo">
-        <div>Address: {address}</div>
-        <div>Balance: {balance}</div>
+        <Card style={{ width: "50rem" }}>
+          <Card.Img variant="top" src="holder.js/100px180" />
+          <Card.Body>
+            <Card.Title>Address: {address}</Card.Title>
+            <Card.Text>Balance: {balance}</Card.Text>
+            <Button href="/blockchain" variant="primary">
+              Goto Blockchain
+            </Button>
+          </Card.Body>
+        </Card>
       </div>
     </div>
   );
