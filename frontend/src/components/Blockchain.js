@@ -4,6 +4,7 @@ import { Button } from "react-bootstrap";
 import { API_BASE_URL } from "../config";
 import Block from "./Block";
 
+// Use this value for pagination to set the number of transactions per page
 const PAGE_RANGE = 3;
 
 function Blockchain() {
@@ -16,6 +17,7 @@ function Blockchain() {
       .then((json) => setBlockchain(json));
   };
 
+  // Fetch the blockchain page starting at 0
   useEffect(() => {
     fetchBlockchainPage({ start: 0, end: PAGE_RANGE });
 
@@ -24,6 +26,7 @@ function Blockchain() {
       .then((json) => setBlockchainLength(json));
   }, []);
 
+  // Render the pagination buttons
   const buttonNumbers = [];
   for (let i = 0; i < blockchainLength / PAGE_RANGE; i++) {
     buttonNumbers.push(i);
