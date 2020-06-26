@@ -66,6 +66,18 @@ function ConductTransaction() {
         <Button variant="danger" onClick={submitTransaction}>
           Submit
         </Button>
+        {showAlert ? (
+          <Alert
+            show={true}
+            onClose={() => setShowAlert(false)}
+            variant="warning"
+            closeLabel="Close Alert"
+            dismissible
+            fade="false"
+          >
+            Success!
+          </Alert>
+        ) : null}
       </div>
       <br />
       <h4>Known Addresses</h4>
